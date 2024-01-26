@@ -31,6 +31,7 @@
 * Handle non-primitive types in entities in order to be more type-safe.
 * Add a queue (Kafka, RabbitMQ, ... ) in order to retry failed requests.
 * Add CI/CD for building and deploying automatically.
+* Extract out some configs to environment variables.
 * Add more logs.
 
 ## :chart_with_upwards_trend: Test coverage

@@ -1,0 +1,64 @@
+plugins {
+    id 'org.springframework.boot' version '3.2.1'
+    id 'idea'
+    id 'java'
+    id 'io.spring.dependency-management' version '1.1.4'
+    id 'org.jetbrains.kotlin.jvm' version '1.9.20'
+}
+
+group = 'com.alea'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+
+ext {
+    set('springCloudVersion', "2023.0.0")
+    cxfOutputDir = file("$buildDir/generated/source")
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+    implementation 'com.mysql:mysql-connector-j:8.3.0'
+    implementation group: 'org.flywaydb', name: 'flyway-core', version: '8.5.13'
+    implementation group: 'org.flywaydb', name: 'flyway-mysql', version: '8.5.13'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+
+    testImplementation group: 'com.h2database', name: 'h2', version: '2.1.214'
+    implementation 'net.datafaker:datafaker:2.1.0'
+
+
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+tasks.named('bootBuildImage') {
+    builder = 'paketobuildpacks/builder-jammy-base:latest'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+kotlin {
+    jvmToolchain(21)
+}

@@ -1,0 +1,33 @@
+server:
+  http2:
+    enabled: true
+  port: 8081
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${DATABASE_IP}:${DATABASE_PORT}/${DATABASE_NAME}?createDatabaseIfNotExist=true
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  flyway:
+    schemas: ${DATABASE_NAME}
+    enabled: true
+    baseline-on-migrate: true
+    baseline-version: 0
+    baseline-description: Hello
+    url: jdbc:mysql://${DATABASE_IP}:${DATABASE_PORT}/${DATABASE_NAME}
+    user: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+  application:
+    name: alea-pokemon
+
+logging:
+  level:
+    org.springframework.web: debug

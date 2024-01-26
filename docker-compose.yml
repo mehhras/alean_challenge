@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  mysqll:
+    image: mysql:8.0
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: persepolis
+      MYSQL_DATABASE: alea_pokemon
+
+  web:
+    build: .
+    ports:
+      - 8081:8081
+    environment:
+      DATABASE_IP: mysqll
+      DATABASE_PORT: 3306
+      DATABASE_NAME: alea_pokemon
+      DB_USERNAME: root
+      DB_PASSWORD: persepolis
+    depends_on:
+      - mysqll

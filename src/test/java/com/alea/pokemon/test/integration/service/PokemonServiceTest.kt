@@ -95,7 +95,6 @@ class PokemonServiceTest {
         pokemonService.crawl()
 
         val pokemons = pokemonRepository.findAll()
-        println(pokemons.size)
         assertThat(pokemons).isNotEmpty
         assert(pokemons[0].javaClass == Pokemon::class.java)
     }

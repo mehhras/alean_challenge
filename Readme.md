@@ -32,3 +32,8 @@
 * Add a queue (Kafka, RabbitMQ, ... ) in order to retry failed requests.
 * Add CI/CD for building and deploying automatically.
 * Add more logs.
+
+## :chart_with_upwards_trend: Test coverage
+This is test coverage calculated by IntelliJ:
+
+![Test coverage](./coverage.png)

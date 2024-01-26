@@ -30,4 +30,5 @@
 * Write more tests to increase the coverage.
 * Handle non-primitive types in entities in order to be more type-safe.
 * Add a queue (Kafka, RabbitMQ, ... ) in order to retry failed requests.
+* Add CI/CD for building and deploying automatically.
 * Add more logs.

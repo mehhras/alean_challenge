@@ -29,5 +29,5 @@
 
 * Write more tests to increase the coverage.
 * Handle non-primitive types in entities in order to be more type-safe.
-* Add a queue (Kafka, RabbitMQ, ... ) in order to handle urls which may not be crawled in the first time.
+* Add a queue (Kafka, RabbitMQ, ... ) in order to retry failed requests.
 * Add more logs.

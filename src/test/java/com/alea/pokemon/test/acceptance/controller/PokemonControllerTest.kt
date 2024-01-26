@@ -5,6 +5,7 @@ import com.alea.pokemon.repository.pokemon.PokemonRepository
 import com.alea.pokemon.test.provider.PokemonProvider
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.RepeatedTest
+import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
@@ -29,7 +30,7 @@ class PokemonControllerTest {
         pokemonRepository.deleteAll()
     }
 
-    @RepeatedTest(3)
+    @Test
     fun `should crawl`(@Autowired mvc: MockMvc) {
         mvc.perform(post("/pokemons/crawl"))
             .andExpect(status().isOk())
